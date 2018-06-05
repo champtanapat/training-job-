@@ -1,0 +1,116 @@
+
+<div class="row">
+    <div class="offset-md-4 col-md4 ">
+        <form action="register.php" class="form-conatiner_register" id="form-reg" method="post">
+            <div class="form-group">
+                <label for="FirstName">
+                    FirstName
+                </label>
+                <input class="form-control" id="firstname_: " maxlength="30" name="firstname_" placeholder="FirstName" required="" type="text"/>
+            </div>
+            <div class="form-group">
+                <label>
+                    LastName
+                </label>
+                <input class="form-control" id="lastname_" maxlength="30" name="lastname_" placeholder="LastName" required="" type="text"/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Email
+                </label>
+                <input class="form-control" id="email_" maxlength="30" name="email_" placeholder="Email" required="" type="Email" />
+            </div>
+            <div class="form-group">
+                <label>
+                    UserName
+                </label>
+                <input class="form-control" id="userReg_" maxlength="30" name="userReg_" onchange="checkUserNames()" placeholder="UserName" required="" type="text"/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Password
+                    <span class="text-danger bg-light" id="errpassword_1">
+                    </span>
+                </label>
+                <input class="form-control" id="passwordReg_" maxlength="30" name="passwordReg_" placeholder="Password" required="" type="Password"/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Confrim Password
+                    <span class="text-danger bg-light" color="red" id="errpassword_2">
+                    </span>
+                </label>
+                <input class="form-control" id="confirm_" maxlength="30" name="confirm_" placeholder="Password" required="" type="Password"/>
+            </div>
+            <button class="btn btn-success btn-block" id="button" onclick="checkPassword()" type="submit">
+                Create
+            </button>
+        </form>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.js">
+</script>
+<script type="text/javascript">
+
+    function checkFucous(password,str)
+            {
+                password.value="";
+                password.focus(); 
+                password.placeholder = str ;
+                password.className += " is-invalid"; 
+            
+            }
+
+    function checkUserNames()
+        { 
+
+                 var username = document.getElementById("userReg_").value;
+                
+                $.ajax({ 
+                url: "checkUsername.php" ,
+                type: "POST",
+                data: {uName:username},
+            })
+            .success(function(result) { 
+                var obj = jQuery.parseJSON(result); 
+                    if(obj != '')
+                    {
+                          //$("#myTable tbody tr:not(:first-child)").remove();
+                          $("#userReg_").empty();
+                          $.each(obj, function(key, val) {
+                            var getphp = val['check']; 
+                            console.log(getphp); 
+                                if(getphp == "true" )
+                                {
+
+                                checkFucous(document.getElementById("userReg_"),"Username is Already"); 
+                                }
+                          });
+                    }
+                    
+            });
+
+        }
+            
+            
+
+        function checkPassword() {
+
+            var passwordReg = document.getElementById("passwordReg_");
+            var  confirm = document.getElementById("confirm_");
+            var check = document.getElementById("form-reg"); 
+            if(passwordReg.value.length <8 )
+            {
+                checkFucous(passwordReg,"password length 8"); 
+                return false; 
+            }
+            else if( (passwordReg.value != confirm.value) ) 
+            {
+                checkFucous(confirm,"password not match");
+                checkFucous(passwordReg,"password not match");
+                return false; 
+            }
+            check.submit();
+            return true; 
+        }
+</script>

@@ -1,0 +1,9 @@
+<?php
+
+include 'connect.php';
+
+$sql = "select Detail form `harddrive` where serial = '57434334453230303137'";
+
+
+
+?>

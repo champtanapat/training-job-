@@ -56,13 +56,15 @@ function dirToArray($dir) {
 
 
 <?php //Check Emty
+
+
 if (isset($_POST['direct']) && $_POST['direct'] != "") {
 
 //Check Device
     $direct1 = $_POST["direct"];
     $direct1 = strtoupper($direct1);
     $direct1 = $direct1 . ":";
-    $cmd     = shell_exec("wmic LogicalDisk where(drivetype = 3) get name");
+    $cmd     = shell_exec("wmic LogicalDisk where(drivetype = 2) get name");
     $direct1 = strpos($cmd, $direct1);
     if ($direct1 == 0) {
         echo "<script type=\"text/javascript\">checkInvalid() </script>";

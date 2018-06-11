@@ -1,32 +1,37 @@
-
-<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript">
+</script>
 <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
 <script language="Javascript" >
-function find(){
+    function find(){
 
-    window.location.assign("index.php");
-    
-}
-
+        window.location.assign("index.php");   
+    }
 </script>
 
-<div class="row">
-    <div class="col">
-        Borrower :<input method ="post" type="text" name="borrower"><br>
-               
-               Borrow date:<input type='text' class='form-control' name='datepicker' id='datepicker' />
-                            <input type='submit' value='Confirm'/></form>
+
+
+        <form class = "form-conatiner_register"   action="?page=home" method="post">
+            <div class='col-sm-4'> 
+                <label>Borrower Name :</label>
+                <input class="form-control"  name="borrower" placeholder="name"/>
+                Borrow date:
+                <input type='text' class='form-control' name='datepicker' id='datepicker'
+                 readonly="readonly"/>
+                <br>
+                <button type="submit" class="btn btn-primary btn-block">Confirm</button>
+            </div>
+  
+        <script>
+            $('#datepicker').datepicker({
+                uiLibrary: 'bootstrap4'
+            });  
+        </script> 
+
     
-    </div>
-     <script>
-        $('#datepicker').datepicker({
-            uiLibrary: 'bootstrap4'
-        });  </script>
      
-     
-     <?php 
-     $id = $_POST['IDS'];
+<?php 
+$id = $_POST['IDS'];
 $date = $_POST['datepicker'] ;
 $id = $_POST['serial'];
 $borrow = $_POST['borrower'];
@@ -40,4 +45,4 @@ $query = mysql_query($update);
 mysql_close();
 
 ?>
-</div>
+</form>

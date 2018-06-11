@@ -32,16 +32,14 @@ body {
  }
 
 
-
-
- /*
- bg_reg
- {
-    margin: 50px;
-    padding: 0;
-    background: url(t-l-3.jpg);
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
+.form-UpdateData {
+    color: #F0FFFF;
+    border: 0px solid #fff;
+    border-radius: 20px;
+    padding: 20px 20px ;
+    margin-top: 2vh;
+    -webkit-box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
 }
-*/
+

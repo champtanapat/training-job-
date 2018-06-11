@@ -1,3 +1,4 @@
+
 <?php include 'checkSession.php';?>
 
 <style>
@@ -12,9 +13,14 @@ table {
 .btn{
 	color: white;
 }
+fomr-me {  border: 0px solid #fff;
+    border-radius: 10px;
+    padding: 50px 60px;
+    margin-top: 20vh;}
 
 
 </style>
+<div class="col-md-12 fomr-me">
 <?php 
 	function choice($choice_,$search_)
 	{
@@ -177,7 +183,7 @@ if ($row > 0) {
         <tr>
         	<td><?php echo $rs["ID"] ?></td>
 			<!-- <td><?php //echo $rs["Detail"] ?></td> -->
-			<td><?php echo $rs["Free_Space"] ?></td>
+			<td><?php echo $rs["Free_Space"]*1024; echo " GB"; ?></td>
 			<td><?php echo $rs["Warranty"] ?> </td>
 			<td> <?php formAction($rs["ID"]);?></td>
 			<?php }?> 
@@ -206,3 +212,5 @@ if ($row > 0) {
 	</div>
 </div>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+</div>

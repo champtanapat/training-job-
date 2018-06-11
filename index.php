@@ -7,7 +7,7 @@ session_start();
 <html lang="en">
     <head>
         <title>
-            Login
+            
         </title>
         <meta charset="utf-8"/>
         <link href="style.css" rel="stylesheet" type="text/css">
@@ -27,7 +27,7 @@ session_start();
                 <script> $('.meseage a').click(function() {
                         $('form').animate({height: "toggle",opacity: "toggle"},"slow");});
                 </script>
-
+        
             </link>
         </link>
     </head>
@@ -39,7 +39,6 @@ if (isset($_GET['page'])) {
 } else {
     $p="Home";
 }
-echo $p;
 switch ($p) {
     case 'register':include 'register.html';
         break;
